@@ -11,10 +11,12 @@ INPUT-OUTPUT SECTION.
 FILE-CONTROL.
     *> Fichier principal contenant les comptes
     SELECT COMPTE ASSIGN TO "Compte.txt"
+        FILE STATUS IS FS-COMPTE
         ORGANIZATION IS LINE SEQUENTIAL.
 
     *> Fichier temporaire utilisé pour réécrire les comptes modifiés
     SELECT TEMP-FILE ASSIGN TO "Temp.txt"
+        FILE STATUS IS FS-TEMP
         ORGANIZATION IS LINE SEQUENTIAL.
 
 DATA DIVISION.
@@ -67,7 +69,12 @@ WORKING-STORAGE SECTION.
 *> Ligne reconstruite après modification d’un compte
 01 NOUVELLE-LIGNE               PIC X(100).
 
+*> Codes retour des opérations sur fichiers
+01 FS-COMPTE                    PIC XX VALUE SPACES.
+01 FS-TEMP                      PIC XX VALUE SPACES.
+
 PROCEDURE DIVISION.
+    PERFORM INITIALISER-FICHIERS
 
     *> Boucle principale du programme :
     *> continue tant que l'utilisateur ne choisit pas de quitter
@@ -104,6 +111,43 @@ PROCEDURE DIVISION.
     END-PERFORM
 
     STOP RUN.
+
+*> Vérifie que les fichiers nécessaires existent,
+*> puis les crée s'ils sont absents
+
+INITIALISER-FICHIERS.
+    PERFORM ASSURER-EXISTENCE-COMPTE
+    PERFORM ASSURER-EXISTENCE-TEMP.
+
+ASSURER-EXISTENCE-COMPTE.
+    MOVE SPACES TO FS-COMPTE
+    OPEN INPUT COMPTE
+
+    EVALUATE FS-COMPTE
+        WHEN "00"
+            CLOSE COMPTE
+        WHEN "35"
+            OPEN OUTPUT COMPTE
+            CLOSE COMPTE
+            DISPLAY "Fichier cree."
+        WHEN OTHER
+            DISPLAY "Erreur: " FS-COMPTE
+    END-EVALUATE.
+
+ASSURER-EXISTENCE-TEMP.
+    MOVE SPACES TO FS-TEMP
+    OPEN INPUT TEMP-FILE
+
+    EVALUATE FS-TEMP
+        WHEN "00"
+            CLOSE TEMP-FILE
+        WHEN "35"
+            OPEN OUTPUT TEMP-FILE
+            CLOSE TEMP-FILE
+            DISPLAY "Fichier cree."
+        WHEN OTHER
+            DISPLAY "Erreur: " FS-TEMP
+    END-EVALUATE.
 
 *> Afficher tous les comptes présents dans le fichier
 
