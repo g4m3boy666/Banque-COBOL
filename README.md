@@ -42,6 +42,38 @@ Le domaine bancaire est intéressant car il permet de manipuler des données, de
 
 - **COBOL**
 
+## Fonctionnalités
+
+- Gestion de compte (basique)
+- Consultation du solde
+- Dépôt d’argent
+- Retrait d’argent
+
+## Prérequis
+
+Avant de compiler le projet, vous devez installer :
+
+- **GnuCOBOL**
+
+### Installation de GnuCOBOL
+
+#### Linux (Debian/Ubuntu)
+```bash
+sudo apt install gnucobol```
+```
+#### Linux (Arch linux)
+```bash
+yay -S gnucobol
+```
+#### Linux (Fedora)
+```bash
+sudo dnf install gnucobol
+```
+#### Linux (openSUSE)
+```bash
+sudo zypper install gnucobol
+```
+
 ## Auteur
 
 Projet réalisé par **Neo (moi)**.
