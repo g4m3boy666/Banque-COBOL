@@ -59,7 +59,7 @@ Avant de compiler le projet, vous devez installer :
 
 #### Linux (Debian/Ubuntu)
 ```bash
-sudo apt install gnucobol```
+sudo apt install gnucobol
 ```
 #### Linux (Arch linux)
 ```bash
