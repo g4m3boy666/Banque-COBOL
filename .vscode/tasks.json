@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compiler COBOL",
+      "type": "shell",
+      "command": "cobc",
+      "args": [
+        "-x",
+        "-free",
+        "main.cob"
+      ],
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Lancer la banque",
+      "type": "shell",
+      "command": "./main",
+      "dependsOn": "Compiler COBOL",
+      "problemMatcher": []
+    }
+  ]
+}

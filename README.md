@@ -1,5 +1,7 @@
 # Banque-COBOL
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/g4m3boy666/Banque-COBOL)
+
 Petit projet réalisé en **COBOL** ayant pour objectif de recréer un **environnement bancaire simple**.
 
 ## À propos du projet
@@ -41,6 +43,24 @@ Le domaine bancaire est intéressant car il permet de manipuler des données, de
 ## Technologies utilisées
 
 - **COBOL**
+
+## Lancer dans GitHub Codespaces
+
+Cliquez sur le bouton **Open in GitHub Codespaces** en haut du README pour ouvrir le projet directement dans GitHub.
+
+Codespaces installe automatiquement **GnuCOBOL** et compile le programme à la création de l’environnement.
+
+Pour lancer le programme dans le terminal Codespaces :
+
+```bash
+./main
+```
+
+Pour recompiler manuellement :
+
+```bash
+cobc -x -free main.cob
+```
 
 ## Fonctionnalités
 

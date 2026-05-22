@@ -1,0 +1,15 @@
+{
+  "name": "Banque COBOL",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bitlang.cobol"
+      ]
+    }
+  },
+  "postCreateCommand": "cobc -x -free main.cob",
+  "remoteUser": "vscode"
+}
